@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somos Kinto - Viandas Saludables</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS Setup -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        kinto: {
+                            orange: '#E65C00', // Tono naranja cálido
+                            green: '#7B8E61',  // Verde apagado/natural
+                            cream: '#FAF8F5',  // Fondo crema
+                            dark: '#2D3748',   // Texto principal
+                            light: '#F3F4F6'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Nunito', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS for subtle animations and overrides -->
+    <style>
+        body {
+            background-color: #FAF8F5; /* kinto-cream */
+            color: #2D3748;
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        /* Hide scrollbar for category row on mobile */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased flex flex-col min-h-screen">
+
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <!-- Anuncio Superior -->
+        <div class="bg-kinto-orange text-white text-center py-2 text-sm font-medium tracking-wide">
+            Envíos a domicilio en Villa Devoto (CABA)
+        </div>
+
+        <!-- Barra Principal Header -->
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-kinto-dark hover:text-kinto-orange focus:outline-none p-2">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+
+            <!-- Logo -->
+            <div class="flex-shrink-0">
+                <a href="#" class="flex items-center gap-2 text-2xl font-heading font-extrabold text-kinto-green tracking-tight">
+                    <i class="fas fa-leaf text-kinto-orange"></i>
+                    Somos Kinto
+                </a>
+            </div>
+
+            <!-- Buscador (Desktop) -->
+            <div class="hidden md:flex flex-1 max-w-md mx-8 relative">
+                <input type="text" placeholder="¿Qué estás buscando?" 
+                       class="w-full bg-gray-100 rounded-full py-2 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-kinto-green text-sm transition-shadow">
+                <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-kinto-orange">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+
+            <!-- Acciones de Usuario -->
+            <div class="flex items-center gap-4 text-sm font-medium text-kinto-dark">
+                <div class="hidden lg:flex flex-col text-right">
+                    <a href="#" class="hover:text-kinto-orange transition-colors">Iniciar sesión</a>
+                    <a href="#" class="text-xs text-gray-500 hover:text-kinto-green transition-colors">Crear cuenta</a>
+                </div>
+                <a href="#" class="lg:hidden text-xl hover:text-kinto-orange"><i class="far fa-user"></i></a>
+                
+                <a href="#" class="relative p-2 text-kinto-dark hover:text-kinto-orange transition-colors flex items-center gap-2">
+                    <div class="relative">
+                        <i class="fas fa-shopping-basket text-xl"></i>
+                        <span class="absolute -top-1 -right-2 bg-kinto-orange text-white text-[10px] font-bold h-4 w-4 rounded-full flex items-center justify-center">0</span>
+                    </div>
+                    <span class="hidden md:inline font-bold">$0.00</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Menú Navegación -->
+        <nav id="main-nav" class="hidden md:block border-t border-gray-100">
+            <ul class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-8 py-3 px-4 font-heading font-semibold text-gray-700 bg-white">
+                <li><a href="#" class="hover:text-kinto-orange transition-colors block text-kinto-orange">Inicio</a></li>
+                
+                <!-- Dropdown Productos -->
+                <li class="relative group">
+                    <a href="#" class="hover:text-kinto-orange transition-colors flex items-center gap-1 cursor-pointer py-1">
+                        Productos <i class="fas fa-chevron-down text-xs mt-1"></i>
+                    </a>
+                    <!-- Menú Desplegable -->
+                    <ul class="absolute z-50 left-0 mt-2 w-48 bg-white border border-gray-100 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left scale-95 group-hover:scale-100">
+                        <li><a href="#" class="block px-4 py-3 text-sm hover:bg-kinto-cream hover:text-kinto-orange rounded-t-lg">Ver todos</a></li>
+                        <li><a href="#" class="block px-4 py-2 text-sm hover:bg-kinto-cream hover:text-kinto-orange">Viandas Semanales</a></li>
+                        <li><a href="#" class="block px-4 py-2 text-sm hover:bg-kinto-cream hover:text-kinto-orange">Postres</a></li>
+                        <li><a href="#" class="block px-4 py-3 text-sm hover:bg-kinto-cream hover:text-kinto-orange rounded-b-lg">Bebidas Naturales</a></li>
+                    </ul>
+                </li>
+                
+                <li><a href="#" class="hover:text-kinto-orange transition-colors py-1 block">Pack de viandas</a></li>
+                <li><a href="#" class="hover:text-kinto-orange transition-colors py-1 block">Contacto</a></li>
+                <li><a href="#" class="hover:text-kinto-orange transition-colors py-1 block">Paso a paso</a></li>
+                <li><a href="#" class="hover:text-kinto-orange transition-colors py-1 block">Preguntas Frecuentes</a></li>
+            </ul>
+        </nav>
+        
+        <!-- Mobile Search (Visible solo en mobile cuando menú está abierto, manejado por JS, pero pondremos un buscador básico aquí) -->
+        <div class="md:hidden px-4 pb-4 hidden" id="mobile-search">
+            <div class="relative">
+                <input type="text" placeholder="¿Qué estás buscando?" 
+                       class="w-full bg-gray-100 rounded-full py-2 pl-4 pr-10 focus:outline-none focus:ring-2 focus:ring-kinto-green text-sm">
+                <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero / Banner Section -->
+        <section class="relative w-full h-[60vh] min-h-[400px] bg-gray-900 flex items-center justify-center overflow-hidden">
+            <!-- Background Image -->
+            <img src="https://images.unsplash.com/photo-1490645935967-10de6ba820cb?auto=format&fit=crop&w=1920&q=80" 
+                 alt="Viandas saludables y frescas" 
+                 class="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-overlay">
+            
+            <!-- Content overlay -->
+            <div class="relative z-10 text-center px-4 max-w-3xl mx-auto">
+                <span class="inline-block py-1 px-3 rounded-full bg-kinto-green text-white text-xs font-bold tracking-wider mb-4 uppercase">
+                    Comé sano todos los días
+                </span>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-heading font-extrabold text-white leading-tight mb-6 drop-shadow-lg">
+                    Viandas ricas, caseras y saludables.
+                </h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-8 font-medium drop-shadow-md">
+                    Resolvé tus comidas de la semana con Kinto. Ingredientes frescos, porciones ideales y sabor de hogar.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#nuestras-viandas" class="bg-kinto-orange hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:-translate-y-1">
+                        Ver Productos
+                    </a>
+                    <a href="#" class="bg-white hover:bg-gray-100 text-kinto-dark font-bold py-3 px-8 rounded-full shadow-lg transition-transform transform hover:-translate-y-1">
+                        Armar mi Pack
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección "Nuestras viandas" -->
+        <section id="nuestras-viandas" class="py-16 px-4 max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-heading font-extrabold text-kinto-dark mb-4 relative inline-block">
+                    Nuestras Viandas
+                    <div class="absolute w-1/2 h-1 bg-kinto-green bottom-0 left-1/4 rounded-full mt-2 transform translate-y-3"></div>
+                </h2>
+                <p class="text-gray-500 mt-4 max-w-2xl mx-auto">Explorá nuestras categorías y encontrá las opciones perfectas para tu estilo de vida. Comida real para gente real.</p>
+            </div>
+
+            <!-- Grid de Categorías -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
+                
+                <!-- Category 1: Pack de viandas -->
+                <a href="#" class="group relative block bg-white rounded-2xl overflow-hidden card-hover border border-gray-100">
+                    <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 h-48 sm:h-56">
+                        <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=500&q=80" alt="Pack de viandas" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 text-center absolute bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent pt-12 pb-4">
+                        <h3 class="text-lg font-heading font-bold text-white uppercase tracking-wider">Pack de Viandas</h3>
+                    </div>
+                </a>
+
+                <!-- Category 2: Wraps -->
+                <a href="#" class="group relative block bg-white rounded-2xl overflow-hidden card-hover border border-gray-100">
+                    <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 h-48 sm:h-56">
+                        <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=500&q=80" alt="Wraps" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 text-center absolute bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent pt-12 pb-4">
+                        <h3 class="text-lg font-heading font-bold text-white uppercase tracking-wider">Wraps</h3>
+                    </div>
+                </a>
+
+                <!-- Category 3: Con Carne -->
+                <a href="#" class="group relative block bg-white rounded-2xl overflow-hidden card-hover border border-gray-100">
+                    <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 h-48 sm:h-56">
+                        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=500&q=80" alt="Con Carne" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 text-center absolute bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent pt-12 pb-4">
+                        <h3 class="text-lg font-heading font-bold text-white uppercase tracking-wider">Con Carne</h3>
+                    </div>
+                </a>
+
+                <!-- Category 4: Con Pollo -->
+                <a href="#" class="group relative block bg-white rounded-2xl overflow-hidden card-hover border border-gray-100">
+                    <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 h-48 sm:h-56">
+                        <img src="https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?auto=format&fit=crop&w=500&q=80" alt="Con Pollo" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 text-center absolute bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent pt-12 pb-4">
+                        <h3 class="text-lg font-heading font-bold text-white uppercase tracking-wider">Con Pollo</h3>
+                    </div>
+                </a>
+
+                <!-- Category 5: Lasagnas -->
+                <a href="#" class="group relative block bg-white rounded-2xl overflow-hidden card-hover border border-gray-100">
+                    <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 h-48 sm:h-56">
+                        <img src="https://images.unsplash.com/photo-1619895092538-128341789043?auto=format&fit=crop&w=500&q=80" alt="Lasagnas" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 text-center absolute bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent pt-12 pb-4">
+                        <h3 class="text-lg font-heading font-bold text-white uppercase tracking-wider">Lasagnas</h3>
+                    </div>
+                </a>
+
+                <!-- Category 6: Tartas -->
+                <a href="#" class="group relative block bg-white rounded-2xl overflow-hidden card-hover border border-gray-100">
+                    <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 h-48 sm:h-56">
+                        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=500&q=80" alt="Tartas" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 text-center absolute bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent pt-12 pb-4">
+                        <h3 class="text-lg font-heading font-bold text-white uppercase tracking-wider">Tartas</h3>
+                    </div>
+                </a>
+
+                <!-- Category 7: Vegetarianas -->
+                <a href="#" class="group relative block bg-white rounded-2xl overflow-hidden card-hover border border-gray-100">
+                    <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 h-48 sm:h-56">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=80" alt="Vegetarianas" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 text-center absolute bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent pt-12 pb-4">
+                        <h3 class="text-lg font-heading font-bold text-white uppercase tracking-wider">Vegetarianas</h3>
+                    </div>
+                </a>
+
+                <!-- Category 8: Ahumados -->
+                <a href="#" class="group relative block bg-white rounded-2xl overflow-hidden card-hover border border-gray-100">
+                    <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden bg-gray-200 h-48 sm:h-56">
+                        <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=500&q=80" alt="Ahumados" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-4 text-center absolute bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent pt-12 pb-4">
+                        <h3 class="text-lg font-heading font-bold text-white uppercase tracking-wider">Ahumados</h3>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-flex items-center gap-2 text-kinto-orange font-bold hover:text-orange-700 transition-colors group">
+                    Ver catálogo completo 
+                    <i class="fas fa-arrow-right transform group-hover:translate-x-1 transition-transform"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Sección Social / Instagram -->
+        <section class="bg-white py-16">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-8 gap-4">
+                    <div>
+                        <h2 class="text-2xl md:text-3xl font-heading font-bold text-kinto-dark">Seguinos en Instagram</h2>
+                        <p class="text-gray-500 mt-2">@somoskinto | Unite a nuestra comunidad</p>
+                    </div>
+                    <a href="#" class="bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 text-white font-bold py-2 px-6 rounded-full shadow hover:opacity-90 transition-opacity flex items-center gap-2">
+                        <i class="fab fa-instagram"></i> Ir al perfil
+                    </a>
+                </div>
+
+                <!-- Feed Grid -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
+                    <a href="#" class="group relative aspect-square overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=400&q=80" alt="Post de Kinto" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center flex-col text-white p-4 text-center">
+                            <i class="fas fa-heart text-2xl mb-2 text-red-400"></i>
+                            <p class="text-xs md:text-sm font-medium line-clamp-3">Te mostramos un poco lo que fue septiembre en KINTO! 🔥 Gracias por acompañarnos.</p>
+                        </div>
+                    </a>
+                    
+                    <a href="#" class="group relative aspect-square overflow-hidden bg-gray-100">
+                        <img src="https://images.unsplash.com/photo-1482049016688-2d3e1b311543?auto=format&fit=crop&w=400&q=80" alt="Post Wrap" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center flex-col text-white p-4 text-center">
+                            <i class="fas fa-heart text-2xl mb-2 text-red-400"></i>
+                            <p class="text-xs md:text-sm font-medium line-clamp-3">Nuevo wrap de carne! 🌯 Ideal para un almuerzo rápido y súper nutritivo.</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="group relative aspect-square overflow-hidden bg-gray-100 hidden md:block">
+                        <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=400&q=80" alt="Post Sorrentinos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center flex-col text-white p-4 text-center">
+                            <i class="fas fa-heart text-2xl mb-2 text-red-400"></i>
+                            <p class="text-xs md:text-sm font-medium line-clamp-3">¡Volvieron los Sorrentinos! 🥟 Pedilos en tu pack semanal, no te quedes sin los tuyos.</p>
+                        </div>
+                    </a>
+
+                    <a href="#" class="group relative aspect-square overflow-hidden bg-gray-100 hidden md:block">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80" alt="Post Bowl" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center flex-col text-white p-4 text-center">
+                            <i class="fas fa-heart text-2xl mb-2 text-red-400"></i>
+                            <p class="text-xs md:text-sm font-medium line-clamp-3">Bowl vegetariano lleno de color y nutrientes. 🥗 La mejor forma de cuidarte.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-kinto-dark text-gray-300 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Columna 1: Brand -->
+                <div>
+                    <a href="#" class="flex items-center gap-2 text-2xl font-heading font-extrabold text-white tracking-tight mb-6">
+                        <i class="fas fa-leaf text-kinto-green"></i>
+                        Somos Kinto
+                    </a>
+                    <p class="text-sm mb-6 text-gray-400">
+                        Comida rica, saludable y lista para disfrutar. Elaboramos viandas con ingredientes frescos y de calidad.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="bg-gray-800 hover:bg-kinto-orange text-white h-10 w-10 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-kinto-orange text-white h-10 w-10 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="bg-gray-800 hover:bg-kinto-orange text-white h-10 w-10 rounded-full flex items-center justify-center transition-colors">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Links -->
+                <div>
+                    <h4 class="text-white font-heading font-bold text-lg mb-6 uppercase tracking-wider">Menú Principal</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="#" class="hover:text-kinto-orange transition-colors">Inicio</a></li>
+                        <li><a href="#" class="hover:text-kinto-orange transition-colors">Productos</a></li>
+                        <li><a href="#" class="hover:text-kinto-orange transition-colors">Pack de viandas</a></li>
+                        <li><a href="#" class="hover:text-kinto-orange transition-colors">Contacto</a></li>
+                        <li><a href="#" class="hover:text-kinto-orange transition-colors">Paso a paso</a></li>
+                        <li><a href="#" class="hover:text-kinto-orange transition-colors">Preguntas Frecuentes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Legal & Ayuda -->
+                <div>
+                    <h4 class="text-white font-heading font-bold text-lg mb-6 uppercase tracking-wider">Ayuda</h4>
+                    <ul class="space-y-3 text-sm mb-6">
+                        <li><a href="#" class="hover:text-kinto-orange transition-colors">Términos y condiciones</a></li>
+                        <li><a href="#" class="hover:text-kinto-orange transition-colors">Política de privacidad</a></li>
+                        <li><a href="#" class="hover:text-kinto-orange transition-colors">Zonas de envío</a></li>
+                    </ul>
+                    
+                    <!-- Botón de arrepentimiento -->
+                    <a href="#" class="inline-flex items-center gap-2 bg-gray-800 border border-gray-700 hover:border-kinto-orange text-gray-300 hover:text-white py-2 px-4 rounded-lg text-sm transition-colors mt-4">
+                        <i class="fas fa-undo-alt"></i> Botón de arrepentimiento
+                    </a>
+                </div>
+
+                <!-- Columna 4: Newsletter -->
+                <div>
+                    <h4 class="text-white font-heading font-bold text-lg mb-6 uppercase tracking-wider">Newsletter</h4>
+                    <p class="text-sm mb-4 text-gray-400">Suscribite a nuestro newsletter para recibir novedades y promociones exclusivas.</p>
+                    <form onsubmit="event.preventDefault(); alert('¡Gracias por suscribirte!');" class="space-y-3">
+                        <input type="email" placeholder="Tu correo electrónico" required
+                               class="w-full bg-gray-800 text-white border border-gray-700 rounded-lg py-3 px-4 focus:outline-none focus:border-kinto-green placeholder-gray-500">
+                        <button type="submit" class="w-full bg-kinto-green hover:bg-green-700 text-white font-bold py-3 px-4 rounded-lg transition-colors">
+                            Suscribirme
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Bottom Footer -->
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+                <p>Copyright Somos kinto - 2026. Todos los derechos reservados.</p>
+                <a href="https://www.argentina.gob.ar/produccion/defensadelconsumidor/formulario" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-1">
+                    <i class="fas fa-balance-scale"></i> Defensa de las y los consumidores
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Manejo del Menú Mobile
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mainNav = document.getElementById('main-nav');
+            const mobileSearch = document.getElementById('mobile-search');
+            let isMenuOpen = false;
+
+            menuBtn.addEventListener('click', () => {
+                isMenuOpen = !isMenuOpen;
+                
+                if (isMenuOpen) {
+                    mainNav.classList.remove('hidden');
+                    mobileSearch.classList.remove('hidden');
+                    menuBtn.innerHTML = '<i class="fas fa-times text-xl"></i>';
+                } else {
+                    mainNav.classList.add('hidden');
+                    mobileSearch.classList.add('hidden');
+                    menuBtn.innerHTML = '<i class="fas fa-bars text-xl"></i>';
+                }
+            });
+
+            // Opcional: Cerrar menú al hacer clic en enlaces en mobile
+            const navLinks = mainNav.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 768) { // Si está en mobile
+                        isMenuOpen = false;
+                        mainNav.classList.add('hidden');
+                        mobileSearch.classList.add('hidden');
+                        menuBtn.innerHTML = '<i class="fas fa-bars text-xl"></i>';
+                    }
+                });
+            });
+            
+            // Reemplazo de alertas (para evitar `alert()`)
+            window.alert = function(message) {
+                const alertBox = document.createElement('div');
+                alertBox.className = 'fixed bottom-4 right-4 bg-kinto-green text-white px-6 py-3 rounded-lg shadow-xl z-50 transform transition-all duration-300 translate-y-full opacity-0 flex items-center gap-3 font-semibold';
+                alertBox.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
+                
+                document.body.appendChild(alertBox);
+                
+                // Animar entrada
+                setTimeout(() => {
+                    alertBox.classList.remove('translate-y-full', 'opacity-0');
+                }, 100);
+                
+                // Eliminar después de 3 segundos
+                setTimeout(() => {
+                    alertBox.classList.add('translate-y-full', 'opacity-0');
+                    setTimeout(() => alertBox.remove(), 300);
+                }, 3000);
+            };
+        });
+    </script>
+</body>
+</html>
