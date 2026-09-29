@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somos kinto</title>
+    <!-- Tailwind CSS Setup -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Basic utilities for a clean e-commerce look */
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+            background-color: #fff;
+        }
+        /* Hidden class for sidebar functionality (CSS-only approach for visual representation) */
+        .cart-sidebar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <div class="w-full bg-white border-b border-gray-200 text-xs py-2 px-4 flex justify-between items-center text-gray-500">
+        <div>
+            <span>¡Hola! <a href="#" class="underline hover:text-black">Iniciá sesión</a> O <a href="#" class="underline hover:text-black">podés registrarte</a></span>
+        </div>
+        <div>
+            <a href="#" class="hover:text-black flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                </svg>
+                0 (Carrito)
+            </a>
+        </div>
+    </div>
+
+    <header class="w-full bg-white py-6">
+        <div class="container mx-auto text-center px-4">
+            <!-- Logo -->
+            <h1 class="text-4xl font-normal tracking-wide text-black mb-6 uppercase">
+                <a href="#">Somos kinto</a>
+            </h1>
+
+            <!-- Menu -->
+            <nav class="hidden md:flex justify-center space-x-6 text-sm tracking-widest uppercase text-gray-800">
+                <a href="#" class="hover:text-gray-500">Inicio</a>
+                
+                <!-- Dropdown Productos (CSS Hover) -->
+                <div class="relative group cursor-pointer">
+                    <span class="hover:text-gray-500 pb-2">Productos</span>
+                    <div class="absolute z-50 left-0 mt-2 w-48 bg-white border border-gray-200 shadow-lg hidden group-hover:block text-left">
+                        <ul class="py-2">
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs">PACK DE VIANDAS</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs">WRAPS</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs">CON CARNE</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs">CON POLLO</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs">AHUMADOS</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs">LASAGNAS</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs">TARTAS</a></li>
+                            <li><a href="#" class="block px-4 py-2 hover:bg-gray-50 text-xs">VEGETARIANAS</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <a href="#" class="hover:text-gray-500">Pack de viandas</a>
+                <a href="#" class="hover:text-gray-500">Contacto</a>
+                <a href="#" class="hover:text-gray-500">Paso a paso</a>
+                <a href="#" class="hover:text-gray-500">Preguntas Frecuentes</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="w-full bg-black text-white text-center py-2 text-sm">
+        Envíos a domicilio Villa devoto (CABA)
+    </div>
+
+    <main class="flex-grow container mx-auto px-4 py-12">
+        
+        <!-- Section 1: Nuestras viandas -->
+        <section class="mb-16">
+            <h2 class="text-2xl text-center text-gray-800 mb-10">Nuestras viandas:</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <!-- Items without real images, just clean placeholders -->
+                <div class="text-center group cursor-pointer">
+                    <div class="bg-gray-100 aspect-square w-full mb-3 flex items-center justify-center text-gray-300 group-hover:bg-gray-200 transition">
+                        [Imagen]
+                    </div>
+                    <h3 class="text-sm font-normal text-gray-800">PACK DE VIANDAS</h3>
+                </div>
+                <div class="text-center group cursor-pointer">
+                    <div class="bg-gray-100 aspect-square w-full mb-3 flex items-center justify-center text-gray-300 group-hover:bg-gray-200 transition">
+                        [Imagen]
+                    </div>
+                    <h3 class="text-sm font-normal text-gray-800">WRAPS</h3>
+                </div>
+                <div class="text-center group cursor-pointer">
+                    <div class="bg-gray-100 aspect-square w-full mb-3 flex items-center justify-center text-gray-300 group-hover:bg-gray-200 transition">
+                        [Imagen]
+                    </div>
+                    <h3 class="text-sm font-normal text-gray-800">CON CARNE</h3>
+                </div>
+                <div class="text-center group cursor-pointer">
+                    <div class="bg-gray-100 aspect-square w-full mb-3 flex items-center justify-center text-gray-300 group-hover:bg-gray-200 transition">
+                        [Imagen]
+                    </div>
+                    <h3 class="text-sm font-normal text-gray-800">CON POLLO</h3>
+                </div>
+                <div class="text-center group cursor-pointer">
+                    <div class="bg-gray-100 aspect-square w-full mb-3 flex items-center justify-center text-gray-300 group-hover:bg-gray-200 transition">
+                        [Imagen]
+                    </div>
+                    <h3 class="text-sm font-normal text-gray-800">LASAGNAS</h3>
+                </div>
+                <div class="text-center group cursor-pointer">
+                    <div class="bg-gray-100 aspect-square w-full mb-3 flex items-center justify-center text-gray-300 group-hover:bg-gray-200 transition">
+                        [Imagen]
+                    </div>
+                    <h3 class="text-sm font-normal text-gray-800">TARTAS</h3>
+                </div>
+                <div class="text-center group cursor-pointer">
+                    <div class="bg-gray-100 aspect-square w-full mb-3 flex items-center justify-center text-gray-300 group-hover:bg-gray-200 transition">
+                        [Imagen]
+                    </div>
+                    <h3 class="text-sm font-normal text-gray-800">VEGETARIANAS</h3>
+                </div>
+                <div class="text-center group cursor-pointer">
+                    <div class="bg-gray-100 aspect-square w-full mb-3 flex items-center justify-center text-gray-300 group-hover:bg-gray-200 transition">
+                        [Imagen]
+                    </div>
+                    <h3 class="text-sm font-normal text-gray-800">AHUMADOS</h3>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Carousels Placeholder -->
+        <section class="mb-16 space-y-8">
+            <div class="w-full h-64 bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-400 uppercase tracking-widest">
+                Carrusel 1
+            </div>
+            <div class="w-full h-64 bg-gray-50 border border-gray-200 flex items-center justify-center text-gray-400 uppercase tracking-widest">
+                Carrusel 2
+            </div>
+        </section>
+
+        <!-- Section 3: Instagram -->
+        <section class="mb-16">
+            <div class="flex flex-col sm:flex-row items-center justify-between mb-8 border-t border-gray-200 pt-8">
+                <div class="text-lg font-bold">Somoskinto</div>
+                <a href="#" class="text-sm underline hover:text-gray-500 mt-2 sm:mt-0">Ver perfil</a>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-4">
+                <!-- IG Posts -->
+                <div class="aspect-square bg-gray-100 flex items-center p-4 text-center text-xs md:text-sm text-gray-600 hover:bg-gray-200 transition cursor-pointer overflow-hidden relative">
+                    <div class="absolute top-2 right-2 opacity-50"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg></div>
+                    <p>👉🏻 Te mostramos un poco lo que fue septiembre en KINTO✨ 🍝 Sorrentinos,</p>
+                </div>
+                <div class="aspect-square bg-gray-100 flex items-center p-4 text-center text-xs md:text-sm text-gray-600 hover:bg-gray-200 transition cursor-pointer relative">
+                    <div class="absolute top-2 right-2 opacity-50"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg></div>
+                    <p>✨WRAP DE CARNE IDEAL POST ENTRENAMIENTO🤤 👉🏻 Comentá “WRAP” y te</p>
+                </div>
+                <div class="aspect-square bg-gray-100 flex items-center p-4 text-center text-xs md:text-sm text-gray-600 hover:bg-gray-200 transition cursor-pointer relative">
+                    <div class="absolute top-2 right-2 opacity-50"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg></div>
+                    <p>ENTRENAS Y NO SABES QUE COMER? 🤔 50g DE PROTEINAS CON ESTE WRAP 🤤 Hacé</p>
+                </div>
+                <div class="aspect-square bg-gray-100 flex items-center p-4 text-center text-xs md:text-sm text-gray-600 hover:bg-gray-200 transition cursor-pointer relative">
+                    <div class="absolute top-2 right-2 opacity-50"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg></div>
+                    <p>Nuevo wrap de carne 🤤 DISPONIBLE EN NUESTRA WEB 💖 www.somoskinto.com.</p>
+                </div>
+                <div class="aspect-square bg-gray-100 flex items-center p-4 text-center text-xs md:text-sm text-gray-600 hover:bg-gray-200 transition cursor-pointer relative">
+                    <div class="absolute top-2 right-2 opacity-50"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg></div>
+                    <p>👆🏻Así de fácil comes rico y saludable🤤 #viandas #comida #saludable</p>
+                </div>
+                <div class="aspect-square bg-gray-100 flex items-center p-4 text-center text-xs md:text-sm text-gray-600 hover:bg-gray-200 transition cursor-pointer relative">
+                    <div class="absolute top-2 right-2 opacity-50"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/></svg></div>
+                    <p>✨ EN 15 MINUTOS COMES Y SIN ENSUCIAR NADA😍</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="w-full border-t border-gray-200 pt-12 pb-6 bg-gray-50">
+        <div class="container mx-auto px-4">
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+                <!-- Columna Categorías -->
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-4 uppercase text-sm">Categorías</h3>
+                    <ul class="text-gray-600 text-sm space-y-2 flex flex-col">
+                        <li><a href="#" class="hover:text-black">Inicio</a></li>
+                        <li><a href="#" class="hover:text-black">Productos</a></li>
+                        <li><a href="#" class="hover:text-black">Pack de viandas</a></li>
+                        <li><a href="#" class="hover:text-black">Contacto</a></li>
+                        <li><a href="#" class="hover:text-black">Paso a paso</a></li>
+                        <li><a href="#" class="hover:text-black">Preguntas Frecuentes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna Newsletter -->
+                <div>
+                    <h3 class="font-bold text-gray-800 mb-4 uppercase text-sm">Newsletter</h3>
+                    <form class="flex flex-col sm:flex-row gap-2" onsubmit="event.preventDefault();">
+                        <input type="text" placeholder="No completar este campo" class="border border-gray-300 p-2 w-full text-sm focus:outline-none focus:border-gray-500">
+                        <button type="submit" class="bg-black text-white px-6 py-2 text-sm uppercase tracking-wider hover:bg-gray-800 transition">Enviar</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Columna Inferior -->
+            <div class="border-t border-gray-200 pt-6 text-xs text-gray-500 flex flex-col items-center justify-center space-y-4 text-center">
+                <p>Copyright Somos kinto - 2026. Todos los derechos reservados.</p>
+                <div class="flex flex-col sm:flex-row gap-2 justify-center items-center">
+                    <a href="#" class="hover:text-black underline">Defensa de las y los consumidores. Para reclamos ingresá acá.</a>
+                    <span class="hidden sm:inline">/</span>
+                    <a href="#" class="hover:text-black underline">Botón de arrepentimiento</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Carrito de compras modal/sidebar representation (hidden by default) -->
+    <aside class="cart-sidebar fixed right-0 top-0 h-full w-80 bg-white shadow-2xl z-50 p-6 flex-col">
+        <div class="flex justify-between items-center border-b pb-4 mb-4">
+            <h2 class="text-lg font-bold">Carrito de compras</h2>
+            <button class="text-gray-500 hover:text-black">&times;</button>
+        </div>
+        <div class="text-center text-gray-500 mt-10">
+            El carrito de compras está vacío.
+        </div>
+    </aside>
+
+</body>
+</html>
